@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   if (isSSR) return null; 
-
+ 
   return (
     <div>
       <Navbar />

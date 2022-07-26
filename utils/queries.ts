@@ -4,13 +4,13 @@ export const allPostsQuery = () => {
      caption,
        video{
         asset->{
-          _id,
+          _id,  
           url
-        }
-      },
+        } 
+      }, 
       userId,
       postedBy->{
-        _id,
+        _id, 
         userName,
         image
       },
