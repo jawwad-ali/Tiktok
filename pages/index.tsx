@@ -13,13 +13,13 @@ const Home = ({ videos }: IProps) => {
       {videos.length ? (
        videos.map((video:Video) => ( 
         <VideoCard post={video} key={video._id} />
-       )) 
+       ))  
       ): 
         <NoResult text={"No Videos"} /> 
       }
-    </div>
+    </div> 
   )
-};
+}; 
 
 export const getServerSideProps = async () => { 
   const { data } = await axios.get(`http://localhost:3000/api/post`);
@@ -27,9 +27,10 @@ export const getServerSideProps = async () => {
   return { 
     props: {
       videos: data,
-    },
+    }, 
   }; 
 };
 
 export default Home;
 // 2.05.54
+// 2.21.44
