@@ -4,7 +4,7 @@ export const allPostsQuery = () => {
      caption,
        video{
         asset->{
-          _id,  
+          _id,   
           url
         } 
       }, 
