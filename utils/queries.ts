@@ -105,7 +105,7 @@ export const userCreatedPostsQuery = (userId: string | string[]) => {
     _id,
      caption,
        video{
-        asset->{
+        asset->{ 
           _id,
           url
         }
