@@ -16,7 +16,7 @@ const SuggestedAccounts: NextPage<IProps> = () => {
 
   useEffect(() => {
     fetchAllUsers();
-  }, []);
+  }, []); 
 
   return (
     <div className="xl:border-b-2 border-gray-200 pb-4">

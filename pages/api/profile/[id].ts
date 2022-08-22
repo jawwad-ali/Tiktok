@@ -4,11 +4,14 @@ import { client } from '../../../utils/client'
 import { singleUserQuery, userCreatedPostsQuery, userLikedPostsQuery } from './../../../utils/queries';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method === "GET") {
-        const { id } = req.query
+    if (req.method === "GET") {  
+        const { id } = req.query 
 
         const query = singleUserQuery(id)
+
+        // UserPosted Videos
         const userVideosQuery = userCreatedPostsQuery(id)
+        // User Liked Videos
         const userLikedVideosQuery = userLikedPostsQuery(id);
 
         const user = await client.fetch(query)
