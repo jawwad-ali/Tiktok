@@ -50,9 +50,9 @@ const Search = ({ videos }: { videos: Video[] }) => {
         <div className="md:mt-16">
           {searchedAccounts.length > 0 ? (
             searchedAccounts.map((user: IUser) => (
-              <Link href={`/profile/${user._id}`}>
+              <Link key={user._id} href={`/profile/${user._id}`}>
                 <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded border-b-2 border-gray-200">
-                  <div> 
+                  <div>
                     <Image
                       className="rounded-full"
                       src={user.image}
@@ -60,7 +60,7 @@ const Search = ({ videos }: { videos: Video[] }) => {
                       width={50}
                       height={50}
                     />
-                  </div>  
+                  </div>
                   <div>
                     <p className="flex capitalize items-center gap-3 font-bold text-lg">
                       {user.userName} <GoVerified className="text-blue-400" />{" "}

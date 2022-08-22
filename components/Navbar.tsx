@@ -13,7 +13,7 @@ import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import useAuthStore from "../store/authStore";
 
 const Navbar = () => {
-  const { addUser, userProfile, removeUser }: any = useAuthStore();
+const { addUser, userProfile, removeUser }: any = useAuthStore();
   const [searchValue, setSearchValue] = useState("");
 
   const router = useRouter();
