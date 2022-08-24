@@ -10,6 +10,7 @@ import VideoCard from "../../components/VideoCard";
 import useAuthStore from "../../store/authStore";
 import { BASE_URL } from "../../utils";
 import { IUser, Video } from "../../type";
+import Head from "next/head";
 
 const Search = ({ videos }: { videos: Video[] }) => {
   const [isAccounts, setIsAccounts] = useState(false);
@@ -47,46 +48,64 @@ const Search = ({ videos }: { videos: Video[] }) => {
 
       {/* Accounts related to search value */}
       {isAccounts ? (
-        <div className="md:mt-16">
-          {searchedAccounts.length > 0 ? (
-            searchedAccounts.map((user: IUser) => (
-              <Link key={user._id} href={`/profile/${user._id}`}>
-                <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded border-b-2 border-gray-200">
-                  <div>
-                    <Image
-                      className="rounded-full"
-                      src={user.image}
-                      alt={user.userName}
-                      width={50}
-                      height={50}
-                    />
+        <>
+          <Head>
+            <title>Accounts</title>
+            <meta
+              name="viewport"
+              content="initial-scale=1.0, width=device-width"
+            />
+          </Head>
+          <div className="md:mt-16">
+            {searchedAccounts.length > 0 ? (
+              searchedAccounts.map((user: IUser) => (
+                <Link key={user._id} href={`/profile/${user._id}`}>
+                  <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded border-b-2 border-gray-200">
+                    <div>
+                      <Image
+                        className="rounded-full"
+                        src={user.image}
+                        alt={user.userName}
+                        width={50}
+                        height={50}
+                      />
+                    </div>
+                    <div>
+                      <p className="flex capitalize items-center gap-3 font-bold text-lg">
+                        {user.userName} <GoVerified className="text-blue-400" />{" "}
+                      </p>
+                      <p className="text-xs text-gray-400 capitalize font-bold">
+                        {user.userName}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="flex capitalize items-center gap-3 font-bold text-lg">
-                      {user.userName} <GoVerified className="text-blue-400" />{" "}
-                    </p>
-                    <p className="text-xs text-gray-400 capitalize font-bold">
-                      {user.userName}
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            ))
-          ) : (
-            <NoResults text={`No Results related to ${searchTerm}`} />
-          )}
-        </div>
+                </Link>
+              ))
+            ) : (
+              <NoResults text={`No Results related to ${searchTerm}`} />
+            )}
+          </div>
+        </>
       ) : (
         // Videos related to search bar
-        <div className="md:mt-16 flex flex-wrap gap-6 md:justify-start">
-          {videos.length ? (
-            videos.map((video: Video, idx) => (
-              <VideoCard post={video} key={idx} />
-            ))
-          ) : (
-            <NoResults text={`No Results for ${searchTerm}`} />
-          )}
-        </div>
+        <>
+          <Head>
+            <title>Videos</title>
+            <meta
+              name="viewport"
+              content="initial-scale=1.0, width=device-width"
+            />
+          </Head>
+          <div className="md:mt-16 flex flex-wrap gap-6 md:justify-start">
+            {videos.length ? (
+              videos.map((video: Video, idx) => (
+                <VideoCard post={video} key={idx} />
+              ))
+            ) : (
+              <NoResults text={`No Results for ${searchTerm}`} />
+            )}
+          </div>
+        </>
       )}
     </div>
   );
